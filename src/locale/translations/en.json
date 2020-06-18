@@ -1,0 +1,6 @@
+{
+  "mlv-app.containers.Landing.title": "Home",
+  "mlv-app.containers.LocaleToggle.ru": "ru",
+  "mlv-app.containers.LocaleToggle.en": "en",
+  "mlv-app.containers.NotFoundPage.header": "Page not found."
+}

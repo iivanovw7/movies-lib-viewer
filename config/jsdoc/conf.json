@@ -1,0 +1,43 @@
+{
+    "source": {
+        "include": [
+            "src",
+            "README.md"
+        ],
+        "includePattern": "\\.(js|jsx)$"
+    },
+    "opts": {
+        "template": "node_modules/docdash",
+        "destination": "dist/doc",
+        "encoding": "utf8",
+        "recurse": true,
+        "tutorials": "doc"
+    },
+    "plugins": [
+        "plugins/markdown"
+    ],
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": ["jsdoc", "closure"]
+    },
+    "templates": {
+        "cleverLinks": false,
+        "monospaceLinks": false
+    },
+    "docdash": {
+        "search": true,
+        "meta": {
+            "title": "movies-lib-viewer"
+        },
+        "sectionOrder": [
+            "Tutorials",
+            "Classes",
+            "Modules",
+            "Externals",
+            "Events",
+            "Namespaces",
+            "Mixins",
+            "Interfaces"
+        ]
+    }
+}

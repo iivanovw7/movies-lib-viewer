@@ -1,0 +1,50 @@
+.mlv-preloader {
+  align-items: center;
+  background: black;
+  bottom: 0;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  opacity: 1;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.mlv-preloader::after {
+  background: url(../img/loaderBg.jpg) no-repeat;
+  background-size: cover;
+  bottom: 0;
+  content: '';
+  left: 0;
+  opacity: 0.1;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+@keyframes mlv-preloader-displaying {
+  0% {
+    animation-timing-function: ease-out;
+    filter: invert(0);
+  }
+
+  50% {
+    animation-timing-function: ease-in;
+    filter: invert(0.3);
+  }
+
+  100% {
+    filter: invert(0);
+  }
+}
+
+.mlv-preloader-image {
+  animation: mlv-preloader-displaying 5s infinite;
+  height: auto;
+  width: 15%;
+}

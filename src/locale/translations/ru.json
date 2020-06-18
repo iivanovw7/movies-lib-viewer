@@ -1,0 +1,6 @@
+{
+  "mlv-app.containers.Landing.title": "Главная",
+  "mlv-app.containers.LocaleToggle.ru": "рус",
+  "mlv-app.containers.LocaleToggle.en": "англ",
+  "mlv-app.containers.NotFoundPage.header": "Страница не найдена."
+}

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[[33mButton[39m]: component test suite Should match snapshot 1`] = `
+<f1
+  onClick={[Function]}
+  styling={Array []}
+  variant="primary"
+>
+  <div
+    id="child-mock-id"
+  >
+    child-mock-id
+  </div>
+</f1>
+`;

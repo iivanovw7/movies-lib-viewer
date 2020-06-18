@@ -1,0 +1,18 @@
+/**
+ * Module contains jest configuration
+ * @module styles.js.js.js
+ * @author Igor Ivanov
+ */
+module.exports = {
+  setupFilesAfterEnv: ['<rootDir>src/__utils__/setup.js'],
+  snapshotSerializers: ['enzyme-to-json/serializer'],
+  clearMocks: true,
+  coverageDirectory: './dist/coverage',
+  testEnvironment: 'jsdom',
+  moduleNameMapper: {
+    '\\.(ttf|eot|woff|woff2|png|jpg|jpeg)$': '<rootDir>src/__mocks__/fileMock.js',
+  },
+  globals: {
+    CONFIG: 'test',
+  },
+};
