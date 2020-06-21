@@ -10,6 +10,16 @@ import { noop } from '../../../__utils__/stub';
 import { testName } from '../../../__utils__/utils';
 import Button from '../index';
 
+let undef;
+const baseProps = {
+  variant: 'primary',
+  onClick: noop,
+  href: 'href',
+  target: 'target',
+  styling: [],
+  hide: false,
+};
+
 // prettier-ignore
 describe(testName('Button', 'component test suite'), function ButtonTestSuite() {
   // eslint-disable-next-line require-jsdoc
@@ -18,15 +28,6 @@ describe(testName('Button', 'component test suite'), function ButtonTestSuite() 
     const node = <Button {...props}>{children}</Button>;
 
     return shouldMount ? mount(node) : shallow(node);
-  };
-
-  let undef;
-  const baseProps = {
-    variant: 'primary',
-    onClick: noop,
-    href: 'href',
-    target: 'target',
-    styling: [],
   };
 
   it('Should match snapshot', () => {
@@ -39,7 +40,7 @@ describe(testName('Button', 'component test suite'), function ButtonTestSuite() 
       .toMatchSnapshot();
   });
 
-  it(testName('button', 'Should mount and check if onClick has been passed in props'), () => {
+  it(testName('button', 'Should render <button />'), () => {
     const fakeProps = {
       ...baseProps,
     };
@@ -47,7 +48,10 @@ describe(testName('Button', 'component test suite'), function ButtonTestSuite() 
 
     expect(component.find('button'))
       .toHaveLength(1);
+
+    component.unmount();
   });
+
   // prettier-ignore
   it(testName('button: a', 'Should mount as link and check if no onClick has been passed in props'), () => {
     const fakeProps = {
@@ -58,6 +62,8 @@ describe(testName('Button', 'component test suite'), function ButtonTestSuite() 
 
     expect(component.find('a'))
       .toHaveLength(1);
+
+    component.unmount();
   });
   // prettier-ignore
   it(testName('button', 'Should verify if all attributes have been passed to child component'), () => {
@@ -89,6 +95,11 @@ describe(testName('Button', 'component test suite'), function ButtonTestSuite() 
 
     expect(button.prop('styling'))
       .toBe(ButtonStyles);
+
+    expect(button.prop('hide'))
+      .toEqual(fakeProps.hide);
+
+    component.unmount();
   });
 
   it(testName('button', 'Should simulate onClick event'), () => {
@@ -105,5 +116,29 @@ describe(testName('Button', 'component test suite'), function ButtonTestSuite() 
 
     expect(onClick)
       .toHaveBeenCalled();
+
+    component.unmount();
+  });
+
+  it(testName('button', 'Should simulate hide prop changes'), () => {
+    const onClick = jest.fn();
+    const fakeProps = {
+      ...baseProps,
+      onClick,
+    };
+
+    const component = Composition(fakeProps, ChildMock.component, true);
+
+    expect(component.find('button'))
+      .toHaveStyleRule('opacity', '1');
+
+    component.setProps({
+      hide: true
+    });
+
+    expect(component.find('button'))
+      .toHaveStyleRule('opacity', '0');
+
+    component.unmount();
   });
 });

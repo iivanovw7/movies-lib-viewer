@@ -16,12 +16,12 @@ import { initialState } from './reducer';
  */
 const selectLanding = (state) => state.landing || initialState;
 
-const makeSelectTrending = createSelector(selectLanding, (landingState) => landingState.trending);
+const makeSelectLanding = createSelector(selectLanding, (landingState) => ({
+  trending: landingState.trending,
+  loading: landingState.loading,
+  error: landingState.error,
+  page: landingState.page,
+}));
 
-const makeSelectLoading = createSelector(selectLanding, (landingState) => landingState.loading);
-
-const makeSelectError = createSelector(selectLanding, (landingState) => landingState.error);
-
-const makeSelectPage = createSelector(selectLanding, (landingState) => landingState.page);
-
-export { makeSelectLoading, makeSelectError, makeSelectTrending, makeSelectPage };
+// eslint-disable-next-line import/prefer-default-export
+export { makeSelectLanding };

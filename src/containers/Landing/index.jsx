@@ -18,10 +18,9 @@ import Carousel from '../Carousel';
 import Container from './Container';
 import { loadTrending } from './model/actions';
 import messages from './model/messages';
-import { makeSelectLoading, makeSelectError, makeSelectTrending, makeSelectPage } from './model/selectors';
+import { makeSelectLanding } from './model/selectors';
 import { withPosters } from './model/utils';
 import Section from './Section';
-
 
 /**
  * Landing page component.
@@ -96,12 +95,16 @@ Landing.defaultProps = {
  * @see {@link module:containers/Landing/model/selectors}
  * @return {Function} selector
  */
-const mapStateToProps = (state) => ({
-  loading: makeSelectLoading(state),
-  error: makeSelectError(state),
-  trending: makeSelectTrending(state),
-  page: makeSelectPage(state),
-});
+const mapStateToProps = (state) => {
+  const { trending, loading, error, page } = makeSelectLanding(state);
+
+  return {
+    trending,
+    loading,
+    error,
+    page,
+  };
+};
 
 /**
  * Function mapping dispatch to props.

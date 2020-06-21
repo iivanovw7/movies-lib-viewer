@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[[33mFooter[39m]: component test suite Should match snapshot 1`] = `
+<Wrapper>
+  <Separator
+    height={0.3}
+  />
+</Wrapper>
+`;

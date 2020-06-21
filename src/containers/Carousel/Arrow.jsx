@@ -16,11 +16,11 @@ import { arrowBackground, arrowBackgroundHover } from '../../style/theme/buttons
 
 /**
  * Map of possible arrow directions.
- * @type {{next: string, prev: string}}
+ * @type {{next: symbol, prev: symbol}}
  */
 export const directionsMap = {
-  prev: 'prev',
-  next: 'next',
+  prev: Symbol('prev'),
+  next: Symbol('next'),
 };
 
 /**
@@ -74,7 +74,7 @@ const Arrow = (props) => {
  *  arrow rotation angle.
  * @property {function} props.handleClick
  *  click handler.
- * @property {string} props.direction
+ * @property {symbol} props.direction
  *  arrow direction descriptor.
  *  @see {@link module:components/Carousel/Arrow~Arrow.directionsMap}
  * @property {boolean} [ props.hidden = false ]
@@ -84,7 +84,7 @@ const Arrow = (props) => {
 Arrow.propTypes = {
   handleClick: PropTypes.func.isRequired,
   rotate: PropTypes.number,
-  direction: PropTypes.string,
+  direction: PropTypes.symbol,
   hidden: PropTypes.bool,
 };
 

@@ -9,10 +9,10 @@ import { zIndex } from '../../style/mixins';
 
 const ImageStyles = css`
   border-radius: 1rem;
-  height: 224px;
+  height: 225px;
   margin: 10px;
+  min-width: 150px;
   transition: all 1s ease;
-  width: 150px;
   z-index: ${zIndex.Carousel};
 
   &:hover {

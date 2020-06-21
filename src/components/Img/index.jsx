@@ -7,7 +7,7 @@ import * as PropTypes from 'prop-types';
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledImg = styled.img`
+export const StyledImg = styled.img`
   ${(props) => props.styling};
 `;
 

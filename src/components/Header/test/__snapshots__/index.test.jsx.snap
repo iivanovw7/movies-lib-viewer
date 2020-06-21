@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[[33mHeader[39m]: component test suite Should match snapshot 1`] = `
+<Wrapper
+  bg="test-file-stub"
+>
+  <Container>
+    <Button
+      hidden={false}
+      href="/"
+      styling={
+        Array [
+          "color:",
+          "#ea4949",
+          ";margin-left:0.8em;&:hover{color:",
+          "#eb5252",
+          ";}svg{height:3rem;max-height:48px;max-width:48px;width:3rem;}",
+        ]
+      }
+      target="_self"
+      variant="primary"
+    >
+      <ForwardRef
+        fill="currentColor"
+      />
+    </Button>
+    <div
+      id="child-mock-id"
+    >
+      child-mock-id
+    </div>
+  </Container>
+  <Separator />
+</Wrapper>
+`;

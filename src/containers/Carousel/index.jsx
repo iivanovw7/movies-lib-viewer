@@ -3,8 +3,9 @@
  * @module containers/Carousel
  * @author Igor Ivanov
  */
+import throttle from 'lodash.throttle';
 import * as PropTypes from 'prop-types';
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useEffect, useState, useCallback } from 'react';
 import { connect } from 'react-redux';
 import { useSwipeable } from 'react-swipeable';
 import { compose } from 'redux';
@@ -16,7 +17,6 @@ import useDidUpdate from '../../utils/hooks/useDidUpdate';
 import useIntersect from '../../utils/hooks/useIntersect';
 import useMedia from '../../utils/hooks/useMedia';
 import { trendingNextPage } from '../Landing/model/actions';
-import { makeSelectLoading } from '../Landing/model/selectors';
 
 import Arrow, { directionsMap } from './Arrow';
 import Container from './Container';
@@ -62,6 +62,12 @@ const singleWidth = 170;
  */
 const posterSize = 300;
 
+/**
+ * Determines if carousel shout be auto-scrolled periodically.
+ * @type {boolean}
+ */
+const autoScroll = true;
+
 /* eslint-disable react/jsx-props-no-spreading, no-unused-vars */
 /**
  * Carousel component.
@@ -87,7 +93,9 @@ function Carousel(props) {
   } = props;
   const { length } = slides;
   const [updated, setUpdated] = useState(false);
-  const [autoScroll, setAutoScroll] = useState(true);
+  const [autoScrollable, setAutoScrollable] = useState(true);
+  const throttledHandleNext = useCallback(throttle(handleNext, 500), [active]);
+  const throttledHandlePrev = useCallback(throttle(handlePrev, 500), [active]);
   const last = length - 1;
   const [ref, entry] = useIntersect({
     threshold: [0, 1],
@@ -179,7 +187,9 @@ function Carousel(props) {
       timeoutId = setTimeout(() => onCarouselNext(length), interval);
     }
 
-    return () => clearTimeout(timeoutId);
+    return () => {
+      clearTimeout(timeoutId);
+    };
   }, [offset, active]);
 
   /**
@@ -189,15 +199,18 @@ function Carousel(props) {
     const timeoutId = setTimeout(() => onCarouselDone(), transitionTime);
 
     if (updated) setUpdated(false);
+    if (!autoScrollable) setAutoScrollable(true);
 
-    return () => clearTimeout(timeoutId);
+    return () => {
+      clearTimeout(timeoutId);
+    };
   }, [desired]);
 
   /**
    *  Resets desired slide on component unmount.
    */
   useEffect(() => {
-    setActiveSlide(0);
+    return () => setActiveSlide(0);
   }, []);
 
   /**
@@ -215,7 +228,10 @@ function Carousel(props) {
    * Next slide switch event handler.
    */
   function handleNext() {
-    onCarouselNext(length, skip);
+    if (active <= length) {
+      setAutoScrollable(false);
+      onCarouselNext(length, length - active >= skip ? skip : 0);
+    }
   }
 
   /**
@@ -223,22 +239,32 @@ function Carousel(props) {
    */
   function handlePrev() {
     if (active !== 0) {
-      onCarouselPrev(length, skip);
+      setAutoScrollable(false);
+      onCarouselPrev(length, active >= skip ? skip : 0);
     }
   }
 
   return (
     <Container>
-      <Arrow hidden={active === 0} rotate={180} direction={directionsMap.prev} handleClick={handlePrev} />
-      <Arrow hidden={active === length} rotate={0} direction={directionsMap.next} handleClick={handleNext} />
-      <div className="carousel-content" {...handlers} style={style}>
+      <Arrow
+        hidden={active === 0}
+        rotate={180}
+        direction={directionsMap.prev}
+        handleClick={throttledHandlePrev}
+      />
+      <Arrow
+        hidden={active === length}
+        rotate={0}
+        direction={directionsMap.next}
+        handleClick={throttledHandleNext}
+      />
+      <div {...handlers} style={style}>
         {slides.slice(0, last).map((slide, index) => (
           <Image
             active={active}
             index={index}
             length={length}
             alt={slide.title}
-            className="carousel-item"
             key={uuidv4()}
             tabIndex={index}
             src={posterUrl(slide, posterSize)}
@@ -308,7 +334,6 @@ const mapStateToProps = (state) => {
     active,
     desired,
     offset,
-    page: makeSelectLoading(state),
   };
 };
 
