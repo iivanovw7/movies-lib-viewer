@@ -112,9 +112,7 @@ function Carousel(props) {
       `(max-width: ${breakpoints.md}px)`,
       `(min-width: ${breakpoints.lg}px)`,
     ],
-    // Column counts (relates to above media queries by array index)
     [1, 2, 3],
-    // Default column count
     1,
   );
 
@@ -209,9 +207,7 @@ function Carousel(props) {
   /**
    *  Resets desired slide on component unmount.
    */
-  useEffect(() => {
-    return () => setActiveSlide(0);
-  }, []);
+  useEffect(() => () => setActiveSlide(0), []);
 
   /**
    * Carousel click handler

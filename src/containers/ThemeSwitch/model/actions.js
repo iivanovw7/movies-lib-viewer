@@ -9,7 +9,7 @@ import { CHANGE_THEME } from './constants';
  * changeTheme action description.
  * @typedef {object} module:containers/ThemeSwitch/model/actions~changeThemeDescription
  * @property {string} type - string action type.
- * @property {string} locale - current locale.
+ * @property {string} mode - current mode.
  */
 /* eslint-disable import/prefer-default-export */
 /**

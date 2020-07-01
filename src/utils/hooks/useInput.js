@@ -2,7 +2,6 @@
  * Module contains use input hook
  * @module utils/hooks/useInput
  */
-
 import { useState } from 'react';
 
 export default (initialValue) => {

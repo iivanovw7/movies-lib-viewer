@@ -86,3 +86,4 @@ const instance = new Logger(config.default);
 Object.freeze(instance);
 
 export default instance;
+export { sendMessage, Logger as InitLogger };

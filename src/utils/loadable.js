@@ -7,7 +7,7 @@ import React, { lazy, Suspense } from 'react';
 /**
  * Lazy loading component.
  * @param {Function} importFunc - import function.
- * @param {Image} fallback - fallback component, in case import has not yet been loaded.
+ * @param {Object} fallback - fallback component, in case import has not yet been loaded.
  * @return {*} React element with props.
  */
 const loadable = (importFunc, { fallback = null } = { fallback: null }) => {

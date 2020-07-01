@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[[33mThemeSwitch[39m]: component test suite Should match snapshot 1`] = `
+<Button
+  hidden={false}
+  onClick={[Function]}
+  styling={
+    Array [
+      "height:1.2em;margin-right:0.5em;padding:0;width:1.7em;",
+    ]
+  }
+  target="_blank"
+  variant="primary"
+>
+  <Img
+    alt="Light theme"
+    className=""
+    src="SvgrURL"
+    styling={
+      Array [
+        "height:100%;opacity:0.9;width:100%;",
+      ]
+    }
+  />
+</Button>
+`;

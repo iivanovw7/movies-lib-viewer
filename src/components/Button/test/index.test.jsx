@@ -52,7 +52,6 @@ describe(testName('Button', 'component test suite'), function ButtonTestSuite() 
     component.unmount();
   });
 
-  // prettier-ignore
   it(testName('button: a', 'Should mount as link and check if no onClick has been passed in props'), () => {
     const fakeProps = {
       ...baseProps,
@@ -65,7 +64,7 @@ describe(testName('Button', 'component test suite'), function ButtonTestSuite() 
 
     component.unmount();
   });
-  // prettier-ignore
+
   it(testName('button', 'Should verify if all attributes have been passed to child component'), () => {
     const ButtonStyles = css`
       height: 1.2em;
