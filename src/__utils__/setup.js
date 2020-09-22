@@ -5,6 +5,7 @@
  */
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
+import 'jest-styled-components';
 import Enzyme, { configure } from 'enzyme';
 import jsdom from 'jsdom';
 

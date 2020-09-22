@@ -2,7 +2,6 @@
  * Module contains component did update hook
  * @module utils/hooks/useDidUpdate
  */
-
 import { useEffect, useRef } from 'react';
 
 /**

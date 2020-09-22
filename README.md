@@ -71,7 +71,7 @@ TMDB_TOKEN=...
 
 Additional arguments could be added to `npm run dev`, `npm run dev:dashboard`, `npm run build` after `--` (в скобках указаны команды, к которым применима данная опция):
 * `--source-maps` {string | false} [false] - creates [source maps](https://webpack.js.org/configuration/devtool/).
-* `--zip` {string | boolean} [false] - creates archive in `./dist` folder, uses `archive` filename by default, if called with `boolean`, or sets custom filename in case it was called with `string`).
+* `--zip` {string | boolean} [false] - creates archive in `./dist` folder (uses `archive` filename by default, if called with `boolean`, or sets custom filename in case it was called with `string`).
 Examples:
 * `npm run build -- --source-map=true`
 * `npm run build -- --zip=true`
@@ -110,7 +110,7 @@ Contains information about configuration files.
 - ~~Add locale toggle~~ <br/>
 - Trending movies slider with posters lazy loading <br/>
 - Home screen structure <br/>
-- Database fife search component  <br/>
+- Database file search component  <br/>
 
 ---
 ### License

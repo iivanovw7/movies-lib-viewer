@@ -69,7 +69,7 @@ ThemeSwitch.defaultProps = {
  * @see {@link module:containers/ThemeSwitch/model/selectors}
  * @return {Function} selector
  */
-const mapStateToProps = createSelector(makeSelectTheme(), (mode) => ({
+export const mapStateToProps = createSelector(makeSelectTheme(), (mode) => ({
   mode,
 }));
 
@@ -90,3 +90,4 @@ export function mapDispatchToProps(dispatch) {
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 
 export default compose(withConnect, memo)(ThemeSwitch);
+export { ThemeSwitch as OriginalThemeSwitch };

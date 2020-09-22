@@ -39,7 +39,7 @@ export function threshold(target) {
 
 /**
  * Carousel swipe event handler.
- * @param {SyntheticEvent | Event} eventData data.
+ * @param {EventData} eventData data.
  * @param {number} length - slides length.
  * @param {number} dir - swipe direction.
  * @return {null | number} swipe length or null.

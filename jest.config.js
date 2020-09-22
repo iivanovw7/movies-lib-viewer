@@ -10,6 +10,7 @@ module.exports = {
   coverageDirectory: './dist/coverage',
   testEnvironment: 'jsdom',
   moduleNameMapper: {
+    '\\.svg': '<rootDir>src/__mocks__/svgrMock.jsx',
     '\\.(ttf|eot|woff|woff2|png|jpg|jpeg)$': '<rootDir>src/__mocks__/fileMock.js',
   },
   globals: {

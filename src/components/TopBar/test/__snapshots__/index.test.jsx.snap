@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[[33mTopBar[39m]: component test suite Should match snapshot 1`] = `
+<Container>
+  <Button
+    hidden={false}
+    href="https://www.themoviedb.org/?language=en-US"
+    target="_blank"
+    variant="primary"
+  >
+    <Img
+      alt="TMDB"
+      className=""
+      src="SvgrURL"
+      styling={
+        Array [
+          "height:0.8em;margin-left:0.8em;",
+          "@media (min-width:",
+          "480",
+          "px){",
+          "
+    height: 0.6em;
+  ",
+          ";}",
+        ]
+      }
+    />
+  </Button>
+  <Block>
+    <div
+      id="child-mock-id"
+    >
+      child-mock-id
+    </div>
+  </Block>
+</Container>
+`;

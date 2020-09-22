@@ -2,7 +2,6 @@
  * Module contains intersection observer hook
  * @module utils/hooks/useIntersect
  */
-
 import { useEffect, useRef, useState } from 'react';
 
 export default ({ root = null, rootMargin, threshold = 0 }) => {

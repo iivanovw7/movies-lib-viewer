@@ -7,7 +7,7 @@
 import { view, __, prop, lensProp, either, pipe, always, path } from 'ramda';
 
 import settings from '../../config/data';
-import createRequest from '../../utils/request';
+import requestHelpers from '../../utils/request';
 
 /**
  * URL request action path
@@ -71,7 +71,7 @@ function requestTrending(params = { requestSet: {} }) {
   const getValue = either(view(__, params), pipe(view(__, paramsMap), prop('defaultOption')));
   const querySet = either(path(['requestSet', 'query'], __), always({}));
 
-  return createRequest({
+  return requestHelpers.createRequest({
     ...params.requestSet,
     url: `${settings.net.tmdbUrl}/${basePath}/${getValue(mediaTypeLens)}/${getValue(timeWindowLens)}`,
     query: {

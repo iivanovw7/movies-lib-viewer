@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[[33mImg[39m]: component test suite Should match snapshot 1`] = `
+<Img__StyledImg
+  alt="alt text"
+  className="test className"
+  onLoad={[Function]}
+  src="link"
+  styling={Array []}
+/>
+`;

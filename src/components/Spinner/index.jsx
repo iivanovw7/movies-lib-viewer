@@ -16,7 +16,7 @@ import { makeSelectTheme } from '../../containers/ThemeSwitch/model/selectors';
  * Default spinner size in `px`.
  * @type {number}
  */
-const defaultSpinnerSize = 50;
+export const defaultSpinnerSize = 50;
 
 /**
  * Creates image component.
@@ -67,3 +67,5 @@ const mapStateToProps = createSelector(makeSelectTheme(), (mode) => ({
 }));
 
 export default connect(mapStateToProps, null)(Spinner);
+
+export { Spinner as OriginalSpinner };

@@ -99,4 +99,10 @@ function createRequest(parameters) {
   return sendRequest(requestData);
 }
 
-export default createRequest;
+const requestHelpers = {
+  checkStatus,
+  sendRequest,
+  createRequest,
+};
+
+export default requestHelpers;

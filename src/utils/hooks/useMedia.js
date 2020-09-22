@@ -1,3 +1,7 @@
+/**
+ * Module contains media observer hook
+ * @module utils/hooks/useMedia
+ */
 import { useState, useEffect } from 'react';
 
 /**
@@ -11,6 +15,16 @@ import { useState, useEffect } from 'react';
  *  returns value according to current media config, or default value.
  *
  * @see {@link https://usehooks.com/useMedia/}
+ *
+ * @example
+ *  const skip = useMedia(
+ *    // Media queries
+ *    [
+ *      `(max-width: ${breakpoints.xs}px)`,
+ *      `(max-width: ${breakpoints.md}px)`,
+ *      `(min-width: ${breakpoints.lg}px)`
+ *    ], [1, 2, 3], 1
+ *  );
  */
 function useMedia(queries, values, defaultValue) {
   // Array containing a media query list for each query

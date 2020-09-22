@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[[33mSpinner[39m]: component test suite Should match snapshot 1`] = `
+<SelfBuildingSquareSpinner
+  animationDuration={6000}
+  className=""
+  color="red"
+  size={55}
+  style={Object {}}
+/>
+`;

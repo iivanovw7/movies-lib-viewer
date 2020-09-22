@@ -23,6 +23,7 @@ const Wrapper = styled.header`
 
   &::after {
     background: url(${(props) => props.bg});
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     bottom: 0;
