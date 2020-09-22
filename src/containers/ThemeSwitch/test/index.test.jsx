@@ -6,7 +6,7 @@ import React from 'react';
 import { connect, Provider } from 'react-redux';
 
 import { noop } from '../../../__utils__/stub';
-import { storeFactory, testName, history } from '../../../__utils__/utils';
+import { storeFactory, testName, history } from '../../../__utils__/common';
 import Button from '../../../components/Button';
 import Img from '../../../components/Img';
 import { DARK_THEME, LIGHT_THEME } from '../../../config/constants';

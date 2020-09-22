@@ -6,7 +6,7 @@ import React from 'react';
 
 import HeaderBg from '../../../../assets/img/loaderBg.jpg';
 import ChildMock from '../../../__mocks__/childMock';
-import { testName, mountWithTheme } from '../../../__utils__/utils';
+import { testName, mountWithTheme } from '../../../__utils__/common';
 import { colorSet } from '../../../config/styles';
 import Button from '../../Button';
 import Separator from '../../Separator';

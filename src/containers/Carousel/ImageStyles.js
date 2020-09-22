@@ -12,7 +12,7 @@ const ImageStyles = css`
   height: 225px;
   margin: 10px;
   min-width: 150px;
-  transition: all 1s ease;
+  transition: transform 1s ease;
   z-index: ${zIndex.Carousel};
 
   &:hover {

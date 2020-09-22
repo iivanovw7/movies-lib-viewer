@@ -6,7 +6,7 @@ import React from 'react';
 import { SelfBuildingSquareSpinner } from 'react-epic-spinners';
 import { connect, Provider } from 'react-redux';
 
-import { storeFactory, testName } from '../../../__utils__/utils';
+import { storeFactory, testName } from '../../../__utils__/common';
 import settings from '../../../config/data';
 import { colorSet } from '../../../config/styles';
 import Spinner, { OriginalSpinner } from '../index';

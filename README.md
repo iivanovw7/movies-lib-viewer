@@ -110,7 +110,7 @@ Contains information about configuration files.
 - ~~Add locale toggle~~ <br/>
 - Trending movies slider with posters lazy loading <br/>
 - Home screen structure <br/>
-- Database fife search component  <br/>
+- Database file search component  <br/>
 
 ---
 ### License

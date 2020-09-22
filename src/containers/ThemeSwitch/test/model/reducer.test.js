@@ -1,7 +1,7 @@
 /**
  * Module contains ThemeSwitch reducer test suite
  */
-import { testName } from '../../../../__utils__/utils';
+import { testName } from '../../../../__utils__/common';
 import { DARK_THEME } from '../../../../config/constants';
 import { changeTheme } from '../../model/actions';
 import { CHANGE_THEME } from '../../model/constants';

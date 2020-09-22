@@ -6,7 +6,7 @@ import React from 'react';
 import { css } from 'styled-components';
 
 import { noop } from '../../../__utils__/stub';
-import { testName, mountWithTheme } from '../../../__utils__/utils';
+import { testName, mountWithTheme } from '../../../__utils__/common';
 import Img, { StyledImg } from '../index';
 
 const baseProps = {

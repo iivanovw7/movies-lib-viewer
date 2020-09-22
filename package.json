@@ -108,7 +108,7 @@
     "html-webpack-plugin": "4.0.4",
     "husky": "4.2.5",
     "imagemin-webpack-plugin": "2.4.2",
-    "jest": "25.2.7",
+    "jest": "26.4.2",
     "jest-styled-components": "6.0.0",
     "jsdoc": "3.6.4",
     "jsdom": "16.2.2",

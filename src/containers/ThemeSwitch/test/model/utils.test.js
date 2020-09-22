@@ -1,7 +1,7 @@
 /**
  * Module contains ThemeSwitch utils test suite
  */
-import { testName } from '../../../../__utils__/utils';
+import { testName } from '../../../../__utils__/common';
 import { DARK_THEME, LIGHT_THEME } from '../../../../config/constants';
 import { DEFAULT_THEME } from '../../model/constants';
 import nextThemeKey from '../../model/utils';

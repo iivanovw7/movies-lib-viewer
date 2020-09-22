@@ -5,7 +5,7 @@ import { mount, shallow } from 'enzyme';
 import React from 'react';
 
 import ChildMock from '../../../__mocks__/childMock';
-import { testName } from '../../../__utils__/utils';
+import { testName } from '../../../__utils__/common';
 import Button from '../../Button';
 import Img from '../../Img';
 import Block from '../Block';

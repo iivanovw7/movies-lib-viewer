@@ -1,7 +1,7 @@
 /**
  * Module contains logger test suite
  */
-import { testName } from '../../__utils__/utils';
+import { testName } from '../../__utils__/common';
 import { sendMessage, InitLogger as Logger } from '../logger';
 
 // prettier-ignore

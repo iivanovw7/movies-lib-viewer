@@ -15,7 +15,7 @@ import ImageStyles from './ImageStyles';
  * @method
  * @param {Object} props
  *  contains component props
- *  @see {@link module:components/Image~Image.propTypes}
+ *  @see {@link module:components/Image~Image.propTypes.s}
  * @constructor
  * @return {Node} React component with children.
  */

@@ -4,7 +4,7 @@
 import { mount, shallow } from 'enzyme';
 import React from 'react';
 
-import { testName } from '../../../__utils__/utils';
+import { testName } from '../../../__utils__/common';
 import Separator from '../../Separator';
 import Footer from '../index';
 import Wrapper from '../Wrapper';

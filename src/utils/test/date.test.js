@@ -2,7 +2,7 @@
  * Module contains date utils test suite
  */
 import * as mocks from '../../__mocks__/dateMocks';
-import { testName } from '../../__utils__/utils';
+import { testName } from '../../__utils__/common';
 import { formatDate } from '../date';
 
 // prettier-ignore

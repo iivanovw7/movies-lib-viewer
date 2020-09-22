@@ -2,7 +2,7 @@
  * Module contains request utils test suite
  */
 import { codesMap, getResponse } from '../../__mocks__/responseMock';
-import { testName } from '../../__utils__/utils';
+import { testName } from '../../__utils__/common';
 import * as constants from '../../config/constants';
 import Logger from '../logger';
 import requestHelpers from '../request';
