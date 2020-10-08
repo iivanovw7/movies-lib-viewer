@@ -11,7 +11,6 @@ import { useSwipeable } from 'react-swipeable';
 import { compose } from 'redux';
 import { v4 as uuidv4 } from 'uuid';
 
-import Img from '../../components/Img';
 import { breakpoints } from '../../config/styles';
 import useDidUpdate from '../../utils/hooks/useDidUpdate';
 import useIntersect from '../../utils/hooks/useIntersect';
@@ -20,11 +19,10 @@ import { trendingNextPage } from '../Landing/model/actions';
 
 import Arrow, { directionsMap } from './Arrow';
 import Container from './Container';
-import Image from './Image';
-import ImageStyles from './ImageStyles';
 import { carouselDesired, carouselDrag, carouselNext, carouselPrev, carouselDone } from './model/actions';
 import { makeSelectCarousel } from './model/selectors';
-import { swiped, posterUrl } from './model/utils';
+import { swiped } from './model/utils';
+import Poster from './Poster';
 
 /**
  * Transition time prop in `ms`.
@@ -66,7 +64,7 @@ const posterSize = 300;
  * Determines if carousel shout be auto-scrolled periodically.
  * @type {boolean}
  */
-const autoScroll = true;
+const autoScroll = false;
 
 /* eslint-disable react/jsx-props-no-spreading, no-unused-vars */
 /**
@@ -85,6 +83,7 @@ function Carousel(props) {
     onCarouselNext,
     onCarouselPrev,
     onCarouselDone,
+    onClick,
     setTrendingNextPage,
     active,
     desired,
@@ -214,10 +213,16 @@ function Carousel(props) {
    * @param {SyntheticEvent | Event} eventData - object represents event data.
    */
   function handleCarouselClick(eventData) {
+    const id = Number(eventData.currentTarget.getAttribute('data-id'));
+
     eventData.preventDefault();
     eventData.stopPropagation();
 
-    setActiveSlide(Number(eventData.currentTarget.getAttribute('tabIndex')));
+    if (onClick) {
+      onClick(id);
+    } else {
+      setActiveSlide(id);
+    }
   }
 
   /**
@@ -256,18 +261,21 @@ function Carousel(props) {
       />
       <div {...handlers} style={style}>
         {slides.slice(0, last).map((slide, index) => (
-          <Image
-            active={active}
-            index={index}
-            length={length}
-            alt={slide.title}
+          <Poster
             key={uuidv4()}
-            tabIndex={index}
-            src={posterUrl(slide, posterSize)}
+            slide={slide}
+            id={onClick ? slide.id : index}
+            posterSize={posterSize}
+            onClick={handleCarouselClick}
           />
         ))}
         <div ref={ref} data-ratio={entry.intersectionRatio}>
-          <Img src={posterUrl(slides[last], posterSize)} alt={slides[last].title} styling={ImageStyles} />
+          <Poster
+            slide={slides[last]}
+            id={onClick ? slides[last].id : slides.length}
+            posterSize={posterSize}
+            onClick={handleCarouselClick}
+          />
         </div>
       </div>
     </Container>
@@ -310,6 +318,7 @@ Carousel.propTypes = {
   setActiveSlide: PropTypes.func.isRequired,
   setTrendingNextPage: PropTypes.func.isRequired,
   slides: PropTypes.array.isRequired,
+  onClick: PropTypes.func,
   active: PropTypes.number,
   desired: PropTypes.number,
   offset: PropTypes.number,

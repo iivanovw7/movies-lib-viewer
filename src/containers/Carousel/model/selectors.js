@@ -16,6 +16,14 @@ import { initialState } from './reducer';
  */
 const selectCarousel = (state) => state.carousel || initialState;
 
+/**
+ * Carousel active slide selector.
+ * @method
+ * @param {Object} state - carousel state.
+ * @return {string} active - carousel active element id.
+ */
+const selectActive = (state) => state.carousel.active || initialState.active;
+
 const makeSelectCarousel = createSelector(selectCarousel, (carouselState) => ({
   offset: carouselState.offset,
   desired: carouselState.desired,
@@ -23,4 +31,4 @@ const makeSelectCarousel = createSelector(selectCarousel, (carouselState) => ({
   end: carouselState.end,
 }));
 
-export { makeSelectCarousel }; // eslint-disable-line import/prefer-default-export
+export { makeSelectCarousel, selectActive }; // eslint-disable-line import/prefer-default-export

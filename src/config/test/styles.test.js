@@ -19,7 +19,14 @@ describe(testName('config.styles', 'config.styles test suite'), function ConfigS
     expect( base )
       .toHaveProperty(
         'zIndexes', [
-          'TopBar', 'Header', 'Footer', 'Separator', 'CarouselProgress', 'Carousel', 'CarouselArrows'
+          'TopBar',
+          'Header',
+          'Footer',
+          'Separator',
+          'CarouselProgress',
+          'Carousel',
+          'CarouselArrows',
+          'CarouselRating'
         ]);
   });
 

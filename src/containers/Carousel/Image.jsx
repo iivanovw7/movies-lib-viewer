@@ -19,7 +19,9 @@ import ImageStyles from './ImageStyles';
  * @constructor
  * @return {Node} React component with children.
  */
-const Image = ({ src, alt }) => <Img src={src} alt={alt} styling={ImageStyles} />;
+const Image = ({ src, alt, id, onClick }) => (
+  <Img src={src} alt={alt} id={id} onClick={onClick} styling={ImageStyles} />
+);
 
 /**
  * @name propTypes
@@ -29,11 +31,15 @@ const Image = ({ src, alt }) => <Img src={src} alt={alt} styling={ImageStyles} /
  *  element image scr string.
  * @property {string} [props.alt = carousel-image]
  *  alt image text string
+ * @property {string | number} [props.id]
+ *  image data-id.
  * @return {Array} React propTypes
  */
 Image.propTypes = {
   src: PropTypes.string,
   alt: PropTypes.string,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  onClick: PropTypes.func,
 };
 
 Image.defaultProps = {

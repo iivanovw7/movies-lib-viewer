@@ -26,6 +26,7 @@ export function* getTrending(action) {
         method: constants.HTTP_METHOD_GET,
         query: {
           page: action.page,
+          locale: action.locale,
         },
       },
       timeWindow: 'week',

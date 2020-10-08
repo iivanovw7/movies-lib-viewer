@@ -11,9 +11,17 @@ import { initialState } from './reducer';
  * Selector to the language domain.
  * @method
  * @param {Object} state - application state.
- * @return {string} locale - application locale selector.
+ * @return {string} language - application language selector.
  */
 const selectLanguage = (state) => state.language || initialState;
+
+/**
+ * Selector to the locale.
+ * @method
+ * @param {Object} state - application state.
+ * @return {string} locale - application locale selector.
+ */
+const selectLocale = (state) => state.language.locale || initialState.locale;
 
 /**
  * Select the language locale.
@@ -22,4 +30,4 @@ const selectLanguage = (state) => state.language || initialState;
  */
 const makeSelectLocale = () => createSelector(selectLanguage, (languageState) => languageState.locale);
 
-export { selectLanguage, makeSelectLocale };
+export { selectLanguage, selectLocale, makeSelectLocale };

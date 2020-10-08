@@ -2,7 +2,23 @@
  * Module contains helper functions.
  * @module utils/helpers
  */
-import { equals, anyPass, isEmpty, isNil, __, path, ap, curry, useWith, split, map, of, is } from 'ramda';
+import {
+  equals,
+  anyPass,
+  isEmpty,
+  isNil,
+  __,
+  path,
+  ap,
+  curry,
+  useWith,
+  split,
+  map,
+  of,
+  is,
+  find,
+  propEq,
+} from 'ramda';
 
 /**
  * Checks if input value is `String`
@@ -13,6 +29,16 @@ import { equals, anyPass, isEmpty, isNil, __, path, ap, curry, useWith, split, m
  * isString(String, {a: 'foo'}) //=> false
  */
 export const isString = is(String);
+
+/**
+ * Checks if input value is `Number`
+ * @func isNumber
+ * @return {Boolean}
+ * @example
+ * isString(Number, 123) //=> true
+ * isString(Number, {a: 'foo'}) //=> false
+ */
+export const isNumber = is(Number);
 
 /**
  * Checks if input value is `undefined`
@@ -84,5 +110,15 @@ const dotPath = useWith(path, [split('.')]);
  * @return {Array} array of props
  */
 export const propsDotPath = useWith(ap, [map(dotPath), of]);
+
+/**
+ * Finds and returns first element that has `id` by default,
+ *  or any other prop which is equal to passed in parameters.
+ * @param {*} id - id value to be found
+ * @param {*} [key=null] - specifies key to be found
+ * @return {Function|*}
+ *  should return found object in case there is a match
+ */
+export const findByPropValue = (id, key = 'id') => find(propEq(key, id));
 
 /* eslint-enable react-hooks/rules-of-hooks */

@@ -20,8 +20,16 @@ export const StyledImg = styled.img`
  * @return {Node} React component with children.
  * @constructor
  */
-const Img = ({ src, alt, styling, handleLoad, className }) => (
-  <StyledImg src={src} alt={alt} onLoad={handleLoad} styling={styling} className={className} />
+const Img = ({ src, alt, id, styling, onClick, handleLoad, className }) => (
+  <StyledImg
+    src={src}
+    alt={alt}
+    data-id={id}
+    onLoad={handleLoad}
+    onClick={onClick}
+    styling={styling}
+    className={className}
+  />
 );
 
 /**
@@ -30,6 +38,7 @@ const Img = ({ src, alt, styling, handleLoad, className }) => (
  * @param {Object} props - React PropTypes
  * @property {string | Object} props.src - image src.
  * @property {string} props.alt - alt string.
+ * @property {string} props.id - id string.
  * @property {string} [props.className = ''] - className string.
  * @property {Array.<string>} [props.styling = []] - image additional styles.
  * @return {Array} React propTypes
@@ -39,7 +48,9 @@ Img.propTypes = {
   alt: PropTypes.string.isRequired,
   styling: PropTypes.array,
   className: PropTypes.string,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   handleLoad: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 Img.defaultProps = {

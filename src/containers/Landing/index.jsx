@@ -5,20 +5,21 @@
  */
 
 import * as PropTypes from 'prop-types';
-import React, { memo, useEffect } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 import Spinner from '../../components/Spinner';
-import { isNilOrEmpty } from '../../utils/helpers';
+import { isNumber, isNilOrEmpty, findByPropValue } from '../../utils/helpers';
 import Carousel from '../Carousel';
+import { selectLocale } from '../LocaleProvider/model/selectors';
 
 import Container from './Container';
 import { loadTrending } from './model/actions';
 import messages from './model/messages';
-import { makeSelectLanding } from './model/selectors';
+import { selectSummary, makeSelectLanding } from './model/selectors';
 import { withPosters } from './model/utils';
 import Section from './Section';
 
@@ -33,12 +34,12 @@ import Section from './Section';
  */
 export function Landing(props) {
   const { landing } = messages;
-  const { onTrendingLoading, trending, loading, page, error } = props;
+  const { onTrendingLoading, trending, loading, page, error, locale } = props;
   const noTrending = isNilOrEmpty(trending);
   const preloading = Boolean(loading && noTrending);
 
   useEffect(() => {
-    onTrendingLoading(page);
+    onTrendingLoading(page, locale);
   }, [page]);
 
   return (
@@ -52,7 +53,12 @@ export function Landing(props) {
             </Helmet>
           )}
         </FormattedMessage>
-        {preloading || error || noTrending ? <Spinner /> : <Carousel slides={withPosters(trending)} />}
+        {
+          // prettier-ignore
+          preloading || error || noTrending
+            ? (<Spinner />)
+            : (<Carousel slides={withPosters(trending)} />)
+        }
       </Section>
     </Container>
   );
@@ -72,6 +78,8 @@ export function Landing(props) {
  *    Triggers trending movies data loading.
  * @property {number} [page = 1]
  *    trending request page number.
+ * @property {string} [props.locale = 'en']
+ *    locale string.
  * @return {Array} React propTypes
  */
 Landing.propTypes = {
@@ -80,6 +88,7 @@ Landing.propTypes = {
   error: PropTypes.object,
   trending: PropTypes.array,
   page: PropTypes.number,
+  locale: PropTypes.string,
 };
 
 Landing.defaultProps = {
@@ -103,6 +112,7 @@ const mapStateToProps = (state) => {
     loading,
     error,
     page,
+    locale: selectLocale(state),
   };
 };
 
@@ -115,7 +125,7 @@ const mapStateToProps = (state) => {
  */
 export function mapDispatchToProps(dispatch) {
   return {
-    onTrendingLoading: (page) => dispatch(loadTrending(page)),
+    onTrendingLoading: (page, locale) => dispatch(loadTrending(page, locale)),
   };
 }
 

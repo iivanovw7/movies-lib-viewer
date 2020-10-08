@@ -1,0 +1,19 @@
+/**
+ * Module contains additional styles used in poster
+ * @module containers/Carousel/PosterStyles
+ * @author Igor Ivanov
+ */
+import { css } from 'styled-components';
+
+import { styleMixins } from '../../style/mixins';
+import { focusOutlineColor } from '../../style/theme/borders';
+
+const PosterStyles = css`
+  display: flex;
+  flex-direction: column;
+  ${styleMixins.focusOutline(focusOutlineColor)};
+  outline-offset: -0.154rem;
+  position: relative;
+`;
+
+export default PosterStyles;
