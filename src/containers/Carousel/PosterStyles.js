@@ -5,7 +5,7 @@
  */
 import { css } from 'styled-components';
 
-import { respondToMedia, mediaKey, styleMixins } from '../../style/mixins';
+import { styleMixins } from '../../style/mixins';
 import { focusOutlineColor } from '../../style/theme/borders';
 
 const PosterStyles = css`

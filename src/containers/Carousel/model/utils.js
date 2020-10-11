@@ -24,9 +24,6 @@ export function previous(length, current, skip = 0) {
  * @return {number} next slide position.
  */
 export function next(length, current, skip = 0) {
-  //console.log(length);
-  //console.log(current);
-  //console.log(Number((current + 1 + skip) % length));
   return Number((current + 1 + skip) % length);
 }
 

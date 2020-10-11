@@ -3,7 +3,6 @@
  * @module components/Rating/Circle
  * @author Igor Ivanov
  */
-import { transparentize } from 'polished';
 import styled from 'styled-components';
 
 import { colorSet } from '../../config/styles';
