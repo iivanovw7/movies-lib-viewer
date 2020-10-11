@@ -10,7 +10,7 @@ import { zIndex } from '../../style/mixins';
 
 const Wrapper = styled.footer`
   bottom: 0;
-  display: column;
+  display: flex;
   flex-direction: row;
   height: ${base.footerHeight}em;
   justify-content: center;

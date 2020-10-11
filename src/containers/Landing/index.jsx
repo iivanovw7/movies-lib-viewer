@@ -5,28 +5,28 @@
  */
 
 import * as PropTypes from 'prop-types';
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 import Spinner from '../../components/Spinner';
-import { isNumber, isNilOrEmpty, findByPropValue } from '../../utils/helpers';
+import { isNilOrEmpty } from '../../utils/helpers';
 import Carousel from '../Carousel';
 import { selectLocale } from '../LocaleProvider/model/selectors';
 
 import Container from './Container';
 import { loadTrending } from './model/actions';
 import messages from './model/messages';
-import { selectSummary, makeSelectLanding } from './model/selectors';
+import { makeSelectLanding } from './model/selectors';
 import { withPosters } from './model/utils';
 import Section from './Section';
 
 /**
  * Landing page component.
  * @method
- * @param {Object} props
+ * @param {Object.<module:containers/Landing~propTypes>} props
  *  contains component props
  *  @see {@link module:containers/Landing~propTypes}
  * @return {Node} React component with children.

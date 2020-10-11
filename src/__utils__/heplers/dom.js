@@ -12,7 +12,7 @@
  *
  * @author Igor Ivanov
  */
-export default function checkContent(element, value, includes = false) {
+export function checkContent(element, value, includes = false) {
   // prettier-ignore
   expect( includes
     ? element.text().includes(value)
@@ -23,3 +23,7 @@ export default function checkContent(element, value, includes = false) {
       : value
     );
 }
+
+export default {
+  checkContent,
+};

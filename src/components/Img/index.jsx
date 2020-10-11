@@ -13,10 +13,11 @@ export const StyledImg = styled.img`
 
 /**
  * Creates image component.
+ * @name Components/Img
  * @method
- * @param {Object} props
+ * @param {Object.<module:components/Img~propTypes>} props
  *  contains component props
- *  @see {@link module:components/Img~Img.propTypes}
+ *  @see {@link module:components/Img~propTypes}
  * @return {Node} React component with children.
  * @constructor
  */
@@ -33,7 +34,7 @@ const Img = ({ src, alt, id, styling, onClick, handleLoad, className }) => (
 );
 
 /**
- * @name Img.propTypes
+ * @name propTypes
  * @type {Object}
  * @param {Object} props - React PropTypes
  * @property {string | Object} props.src - image src.

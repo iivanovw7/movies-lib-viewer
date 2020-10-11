@@ -3,9 +3,8 @@
  * @module containers/Carousel
  * @author Igor Ivanov
  */
-import throttle from 'lodash.throttle';
 import * as PropTypes from 'prop-types';
-import React, { memo, useEffect, useState, useCallback } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useSwipeable } from 'react-swipeable';
 import { compose } from 'redux';
@@ -70,9 +69,11 @@ const autoScroll = false;
 /**
  * Carousel component.
  * @method
- * @param {Object} props
+ *
+ * @param {Object.<module:containers/Carousel~propTypes>} props
  *  contains component props
  *  @see {@link module:containers/Carousel~propTypes}
+ *
  * @return {Node} React component with children.
  * @constructor
  */
@@ -93,9 +94,7 @@ function Carousel(props) {
   const { length } = slides;
   const [updated, setUpdated] = useState(false);
   const [autoScrollable, setAutoScrollable] = useState(true);
-  const throttledHandleNext = useCallback(throttle(handleNext, 500), [active]);
-  const throttledHandlePrev = useCallback(throttle(handlePrev, 500), [active]);
-  const last = length - 1;
+  const last = slides.length - 1;
   const [ref, entry] = useIntersect({
     threshold: [0, 1],
   });
@@ -117,7 +116,7 @@ function Carousel(props) {
 
   /**
    * Setting up react-swipeable handlers.
-   * @type {SwipeableHandlers}
+   * @type {Object.<SwipeableHandlers>}
    */
   const handlers = useSwipeable({
     onSwiping(e) {
@@ -196,7 +195,7 @@ function Carousel(props) {
     const timeoutId = setTimeout(() => onCarouselDone(), transitionTime);
 
     if (updated) setUpdated(false);
-    if (!autoScrollable) setAutoScrollable(true);
+    if (autoScroll && !autoScrollable) setAutoScrollable(true);
 
     return () => {
       clearTimeout(timeoutId);
@@ -213,15 +212,15 @@ function Carousel(props) {
    * @param {SyntheticEvent | Event} eventData - object represents event data.
    */
   function handleCarouselClick(eventData) {
-    const id = Number(eventData.currentTarget.getAttribute('data-id'));
+    const index = Number(eventData.currentTarget.getAttribute('data-index'));
 
     eventData.preventDefault();
     eventData.stopPropagation();
 
     if (onClick) {
-      onClick(id);
+      onClick(index);
     } else {
-      setActiveSlide(id);
+      setActiveSlide(index);
     }
   }
 
@@ -247,18 +246,8 @@ function Carousel(props) {
 
   return (
     <Container>
-      <Arrow
-        hidden={active === 0}
-        rotate={180}
-        direction={directionsMap.prev}
-        handleClick={throttledHandlePrev}
-      />
-      <Arrow
-        hidden={active === length}
-        rotate={0}
-        direction={directionsMap.next}
-        handleClick={throttledHandleNext}
-      />
+      <Arrow hidden={active === 0} rotate={180} direction={directionsMap.prev} handleClick={handlePrev} />
+      <Arrow hidden={active === length} rotate={0} direction={directionsMap.next} handleClick={handleNext} />
       <div {...handlers} style={style}>
         {slides.slice(0, last).map((slide, index) => (
           <Poster
@@ -301,6 +290,8 @@ function Carousel(props) {
  *    triggers loading of new set of elements.
  * @property {Array.<*>} props.slides
  *    slides list.
+ * @property {function} [onClick]
+ *    optional element click handler.
  * @property {number} [active]
  *    active slide number.
  * @property {number} [desired]
@@ -346,7 +337,7 @@ const mapStateToProps = (state) => {
  * Function mapping dispatch to props.
  * Dispatching action which may cause change of application state.
  * @func mapDispatchToProps
- * @param {Function} dispatch method.
+ * @param {function} dispatch method.
  * @return {Object} redux container
  */
 export function mapDispatchToProps(dispatch) {

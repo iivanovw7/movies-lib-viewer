@@ -11,6 +11,7 @@ import Wrapper from './Wrapper';
 
 /**
  * Creates application footer component.
+ * @name Components/Footer
  * @method
  * @constructor
  * @return {Node} React component with children.

@@ -5,7 +5,9 @@
  */
 import styled from 'styled-components';
 
-const StyledButton = styled.button`
+const StyledButton = styled.button.attrs(({ index }) => ({
+  'data-index': index,
+}))`
   background: transparent;
   border: none;
   ${(props) => props.styling};

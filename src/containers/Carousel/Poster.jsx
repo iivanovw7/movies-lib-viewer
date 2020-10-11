@@ -16,7 +16,9 @@ import RatingStyles from './RatingStyles';
 
 /**
  * Creates slider poster component.
+ * @name Carousel/Poster
  * @method
+ *
  * @param {Object} props
  *  contains component props
  *  @see {@link module:components/Poster~Poster.propTypes}
@@ -28,9 +30,9 @@ const Poster = ({ slide, id, posterSize, onClick }) => {
   const { vote_average, title } = slide;
 
   return (
-    <Button id={id} variant="primary" onClick={onClick} styling={PosterStyles}>
+    <Button index={id} variant="primary" onClick={onClick} styling={PosterStyles}>
       <Image alt={title} src={posterUrl(slide, posterSize)} />
-      <Rating styling={RatingStyles} value={vote_average.toPrecision(2)} min={0} max={10} />
+      <Rating styling={RatingStyles} value={vote_average} text={vote_average.toPrecision(2)} min={0} max={10} />
     </Button>
   );
 };

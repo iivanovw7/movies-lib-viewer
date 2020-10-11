@@ -17,10 +17,11 @@ import Wrapper from './Wrapper';
 
 /**
  * Creates application header component.
+ * @name Components/Header
  * @method
- * @param {Object} props
+ * @param {Object.<module:components/Header~propTypes>} props
  *  contains component props
- *  @see {@link module:components/Header~Header.propTypes}
+ *  @see {@link module:components/Header~propTypes}
  * @constructor
  * @return {Node} React component with children.
  */
@@ -41,7 +42,7 @@ function Header(props) {
 }
 
 /**
- * @name Header.propTypes
+ * @name propTypes
  * @type {Object}
  * @param {Object} props - React PropTypes
  * @property {string | Image} props.children
@@ -49,7 +50,11 @@ function Header(props) {
  * @return {Array} React propTypes
  */
 Header.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.node,
+    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.func, PropTypes.node])).isRequired,
+  ]),
 };
 
 export default Header;

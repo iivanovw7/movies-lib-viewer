@@ -16,10 +16,12 @@ import LogoStyles from './LogoStyles';
 
 /**
  * Creates TopBar component.
+ * @name Components/TopBar
  * @method
- * @param {Object} props
+ *
+ * @param {Object.<module:components/TopBar~propTypes>} props
  *  contains component props
- *  @see {@link module:components/TopBar~TopBar.propTypes}
+ *  @see {@link module:components/TopBar~propTypes}
  * @return {Node} React component with children.
  * @constructor
  */
@@ -45,9 +47,9 @@ function TopBar(props) {
  */
 TopBar.propTypes = {
   children: PropTypes.oneOfType([
-    PropTypes.element,
+    PropTypes.func,
     PropTypes.node,
-    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.element, PropTypes.node])),
+    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.func, PropTypes.node])),
   ]),
 };
 

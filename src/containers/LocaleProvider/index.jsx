@@ -16,7 +16,7 @@ import { makeSelectLocale } from './model/selectors';
 /**
  * Creates IntlProvider HOC to inject localization.
  * @method
- * @param {Object} props
+ * @param {Object.<module:containers/LocaleProvider~propTypes>} props
  *  contains component props
  *  @see {@link module:containers/LocaleProvider~propTypes}
  * @return {Node} React component with children.
@@ -44,7 +44,14 @@ function LocaleProvider(props) {
 LocaleProvider.propTypes = {
   locale: PropTypes.string,
   messages: PropTypes.object.isRequired,
-  children: PropTypes.element.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.node,
+    PropTypes.arrayOf(PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.node
+    ]))
+  ]).isRequired,
 };
 
 LocaleProvider.defaultProps = {

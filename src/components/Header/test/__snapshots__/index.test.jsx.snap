@@ -8,6 +8,7 @@ exports[`[[33mHeader[39m]: component test suite Should match snapshot 1`] = `
     <Button
       hidden={false}
       href="/"
+      index={0}
       styling={
         Array [
           "color:",

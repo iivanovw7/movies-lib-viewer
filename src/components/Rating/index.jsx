@@ -1,6 +1,6 @@
 /**
  * Module contains carousel rating meter.
- * @module containers/Carousel/Poster
+ * @module components/Rating
  * @author Igor Ivanov
  */
 import * as PropTypes from 'prop-types';
@@ -12,16 +12,37 @@ import Figure from './Figure';
 import Rate from './Rate';
 import Text from './Text';
 
-const INITIAL_OFFSET = 25;
+/**
+ * Value represents stroke dash initial offset.
+ * @type {number}
+ */
+export const INITIAL_OFFSET = 25;
 
-const colorSet = ['#ff0b0b', '#eac000', '#007b00'];
+/**
+ * List of `default` dash colors used in case `strokeColor` props is not set.
+ * @type {string[]}
+ */
+export const colorSet = ['#ff0b0b', '#eac000', '#007b00'];
 
+/**
+ * Creates Rating component.
+ * @name Components/Rating
+ * @method
+ *
+ * @param {Object.<module:components/Rating~propTypes>} props
+ *  contains component props
+ *  @see {@link module:components/Rating~propTypes}
+ *
+ * @return {Node} React component with children.
+ * @constructor
+ */
 const Rating = (props) => {
   const {
     value,
     min,
     max,
     maxSize,
+    text,
     textColor,
     styling,
     strokeColor,
@@ -54,7 +75,7 @@ const Rating = (props) => {
         />
         <Rate textColor={textColor}>
           <Text x="50%" y="50%">
-            {value}
+            {text || value}
           </Text>
         </Rate>
       </svg>
@@ -62,10 +83,29 @@ const Rating = (props) => {
   );
 };
 
+/**
+ * @name propTypes
+ * @type {Object}
+ * @param {Object} props - React PropTypes
+ * @property {number} props.value - specifies value to be displayed.
+ * @property {number} props.min - min limit.
+ * @property {number} props.max - max limit.
+ * @property {string} props.text - optional text to be displayed instead of value.
+ * @property {string} [props.maxSize = 50px] - max component size.
+ * @property {string} [props.textColor] - force rating text color.
+ * @property {string} [props.strokeColor] - force rating text color.
+ * @property {number} [props.strokeWidth = 4] - base strike width.
+ * @property {Array.<string>} [props.styling = []] - additional styles.
+ * @property {number} [props.trailStrokeWidth = 4] - force change of train width.
+ * @property {string} [props.trailStrokeColor = transparent] - trail fill color.
+ * @property {boolean} [trailSpaced = false] if trail should be dashed or solid.
+ * @return {Array} React propTypes
+ */
 Rating.propTypes = {
   value: PropTypes.number.isRequired,
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
+  text: PropTypes.string,
   maxSize: PropTypes.string,
   textColor: PropTypes.string,
   strokeColor: PropTypes.string,
@@ -77,10 +117,9 @@ Rating.propTypes = {
 };
 
 Rating.defaultProps = {
-  maxSize: '50px',
-  strokeWidth: 4,
-  trailStrokeWidth: 4,
-  trailStrokeColor: 'transparent',
+  maxSize: '40px',
+  strokeWidth: 3,
+  trailStrokeWidth: 3,
   trailSpaced: false,
 };
 

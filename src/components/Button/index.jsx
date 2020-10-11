@@ -14,15 +14,17 @@ import StyledLink from './StyledLink';
 
 /**
  * Creates styled button component.
+ * @name Components/Button
  * @method
- * @param {Object} props
+ *
+ * @param {Object.<module:components/Button~propTypes>} props
  *  contains component props
- *  @see {@link module:components/Button~Button.propTypes}
+ *  @see {@link module:components/Button~propTypes}
  * @return {Node} React component with children.
  * @constructor
  */
 const Button = (props) => {
-  const { variant, children, styling, onClick } = props;
+  const { variant, children, styling, onClick, index } = props;
 
   /* eslint-disable react/jsx-props-no-spreading */
   const ButtonElement = R.ifElse(
@@ -33,14 +35,14 @@ const Button = (props) => {
   /* eslint-enable react/jsx-props-no-spreading */
 
   return (
-    <ButtonElement variant={variant} styling={styling} onClick={onClick}>
+    <ButtonElement data-index={index} variant={variant} styling={styling} onClick={onClick}>
       {children}
     </ButtonElement>
   );
 };
 
 /**
- * @name Button.propTypes
+ * @name propTypes
  * @type {Object}
  * @param {Object} props - React PropTypes
  * @property {string} [props.variant = 'primary'] - color variant string.
@@ -50,21 +52,28 @@ const Button = (props) => {
  * @property {string} props.href - target link.
  * @property {string} [props.target = '_blank'] - target prop.
  * @property {boolean} [props.hidden = false] - if element should be hidden.
+ * @property {number} [props.index = 0] - index which is passed in `data-index` attribute.
  * @return {Array} React propTypes
  */
 Button.propTypes = {
   variant: PropTypes.string.isRequired,
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.node,
+    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.func, PropTypes.node])),
+  ]),
   styling: PropTypes.array,
   onClick: PropTypes.func,
   href: PropTypes.string,
   target: PropTypes.string,
   hidden: PropTypes.bool,
+  index: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 Button.defaultProps = {
   target: '_blank',
   hidden: false,
+  index: 0,
 };
 
 export default Button;

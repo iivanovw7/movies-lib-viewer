@@ -12,10 +12,12 @@ import ImageStyles from './ImageStyles';
 
 /**
  * Creates slider image component.
+ * @name Carousel/Image
  * @method
- * @param {Object} props
+ *
+ * @param {Object.<module:containers/Carousel/Image~propTypes>} props
  *  contains component props
- *  @see {@link module:components/Image~Image.propTypes.s}
+ *  @see {@link module:containers/Carousel/Image~propTypes}
  * @constructor
  * @return {Node} React component with children.
  */
@@ -33,6 +35,8 @@ const Image = ({ src, alt, id, onClick }) => (
  *  alt image text string
  * @property {string | number} [props.id]
  *  image data-id.
+ * @property {function} [props.onClick]
+ *  optional click handler.
  * @return {Array} React propTypes
  */
 Image.propTypes = {

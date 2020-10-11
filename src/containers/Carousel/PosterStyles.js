@@ -5,7 +5,7 @@
  */
 import { css } from 'styled-components';
 
-import { styleMixins } from '../../style/mixins';
+import { respondToMedia, mediaKey, styleMixins } from '../../style/mixins';
 import { focusOutlineColor } from '../../style/theme/borders';
 
 const PosterStyles = css`
@@ -14,6 +14,11 @@ const PosterStyles = css`
   ${styleMixins.focusOutline(focusOutlineColor)};
   outline-offset: -0.154rem;
   position: relative;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
 `;
 
 export default PosterStyles;

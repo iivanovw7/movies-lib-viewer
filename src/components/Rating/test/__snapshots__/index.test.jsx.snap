@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[[33mRating[39m]: component test suite Should match snapshot 1`] = `
+<Figure
+  maxSize="40px"
+>
+  <svg
+    viewBox="0 0 38 38"
+  >
+    <Circle
+      strokeDasharray={0}
+      strokeWidth={3}
+    />
+    <Circle
+      stroke="#eac000"
+      strokeDasharray="40 60"
+      strokeDashoffset={25}
+      strokeWidth={3}
+    />
+    <Rate>
+      <Text
+        x="50%"
+        y="50%"
+      >
+        4
+      </Text>
+    </Rate>
+  </svg>
+</Figure>
+`;

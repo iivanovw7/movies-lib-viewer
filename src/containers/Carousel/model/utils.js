@@ -24,12 +24,15 @@ export function previous(length, current, skip = 0) {
  * @return {number} next slide position.
  */
 export function next(length, current, skip = 0) {
+  //console.log(length);
+  //console.log(current);
+  //console.log(Number((current + 1 + skip) % length));
   return Number((current + 1 + skip) % length);
 }
 
 /**
  * Returns carousel element threshold.
- * @param {element} target - target element.
+ * @param {Object} target - target element.
  * @return {number} target threshold
  */
 export function threshold(target) {
@@ -39,7 +42,7 @@ export function threshold(target) {
 
 /**
  * Carousel swipe event handler.
- * @param {EventData} eventData data.
+ * @param {Object} eventData data.
  * @param {number} length - slides length.
  * @param {number} dir - swipe direction.
  * @return {null | number} swipe length or null.

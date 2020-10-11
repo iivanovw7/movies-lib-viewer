@@ -5,6 +5,7 @@ exports[`[[33mTopBar[39m]: component test suite Should match snapshot 1`] = `
   <Button
     hidden={false}
     href="https://www.themoviedb.org/?language=en-US"
+    index={0}
     target="_blank"
     variant="primary"
   >

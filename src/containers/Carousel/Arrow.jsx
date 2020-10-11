@@ -25,10 +25,12 @@ export const directionsMap = {
 
 /**
  * Creates slider Arrow component.
+ * @name Carousel/Arrow
  * @method
- * @param {Object} props
+ *
+ * @param {Object.<module:containers/Carousel/Arrow~propTypes>} props
  *  contains component props
- *  @see {@link module:components/Carousel/Arrow~Arrow.propTypes}
+ *  @see {@link module:containers/Carousel/Arrow~propTypes}
  * @constructor
  * @return {Node} React component with children.
  */
