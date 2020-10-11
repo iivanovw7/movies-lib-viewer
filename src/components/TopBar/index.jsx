@@ -6,13 +6,15 @@
 import * as PropTypes from 'prop-types';
 import React from 'react';
 
-import TMDBLogo from '../../../assets/svg/tmdb.svg';
+import { ReactComponent as FacebookLogo } from '../../../assets/svg/social_facebook.svg';
+import { ReactComponent as InstagramLogo } from '../../../assets/svg/social_instagram.svg';
+import { ReactComponent as TwitterLogo } from '../../../assets/svg/social_twitter.svg';
+import settings from '../../config/data';
 import Button from '../Button';
-import Img from '../Img';
 
 import Block from './Block';
 import Container from './Container';
-import LogoStyles from './LogoStyles';
+import SocialButtonStyles from './SocialButtonStyles';
 
 /**
  * Creates TopBar component.
@@ -27,12 +29,21 @@ import LogoStyles from './LogoStyles';
  */
 function TopBar(props) {
   const { children } = props;
+  const { social } = settings;
 
   return (
     <Container>
-      <Button variant="primary" href="https://www.themoviedb.org/?language=en-US">
-        <Img src={TMDBLogo} alt="TMDB" styling={LogoStyles} />
-      </Button>
+      <Block>
+        <Button href={social.facebook} target="_self" styling={SocialButtonStyles}>
+          <FacebookLogo fill="currentColor" />
+        </Button>
+        <Button href={social.instagram} target="_self" styling={SocialButtonStyles}>
+          <InstagramLogo fill="currentColor" />
+        </Button>
+        <Button href={social.twitter} target="_self" styling={SocialButtonStyles}>
+          <TwitterLogo fill="currentColor" />
+        </Button>
+      </Block>
       <Block>{children}</Block>
     </Container>
   );

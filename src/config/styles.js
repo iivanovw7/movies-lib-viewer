@@ -19,7 +19,7 @@
  * @type {module:config/styles~base}
  */
 export const base = {
-  topBarHeight: 2,
+  topBarHeight: 2.5,
   headerHeight: 5,
   footerHeight: 0.3,
   zIndexes: [
@@ -75,6 +75,7 @@ export const logoColor = '#ea4949';
  * @param {module:config/styles~colorSet} light
  */
 export const colorSet = {
+  topBarLinks: '#ea4949',
   gradients: {
     first: 'rgba(250, 241, 8, 1)',
     second: 'rgba(176, 14, 14, 1)',

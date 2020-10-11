@@ -56,7 +56,7 @@ const Button = (props) => {
  * @return {Array} React propTypes
  */
 Button.propTypes = {
-  variant: PropTypes.string.isRequired,
+  variant: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.node,

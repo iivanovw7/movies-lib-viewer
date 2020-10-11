@@ -6,12 +6,12 @@ import React from 'react';
 
 import ChildMock from '../../../__mocks__/childMock';
 import { testName } from '../../../__utils__/common';
+import settings from '../../../config/data';
 import Button from '../../Button';
-import Img from '../../Img';
 import Block from '../Block';
 import Container from '../Container';
 import TopBar from '../index';
-import LogoStyles from '../LogoStyles';
+import SocialButtonStyles from '../SocialButtonStyles';
 
 /* eslint-disable require-jsdoc, react/jsx-props-no-spreading */
 // prettier-ignore
@@ -40,7 +40,7 @@ describe(testName('TopBar', 'component test suite'), function TopBarTestSuite() 
     const component = Composition({}, ChildMock.component);
 
     expect(component.find(Block))
-      .toHaveLength(1);
+      .toHaveLength(2);
   });
 
   it('Should render child mock', () => {
@@ -57,25 +57,15 @@ describe(testName('TopBar', 'component test suite'), function TopBarTestSuite() 
   it(testName('Button', 'Should render <Button /> with props'), () => {
     const component = Composition({}, ChildMock.component, true);
     const button = component.find(Button);
-    const image = component.find(Img);
 
     expect(button)
-      .toHaveLength(1);
+      .toHaveLength(3);
 
-    expect(button.prop('variant'))
-      .toEqual('primary');
+    expect(button.at(0).prop('href'))
+      .toEqual(settings.social.facebook);
 
-    expect(button.prop('href'))
-      .toEqual('https://www.themoviedb.org/?language=en-US');
-
-    expect(image)
-      .toHaveLength(1);
-
-    expect(image.prop('alt'))
-      .toEqual('TMDB');
-
-    expect(image.prop('styling'))
-      .toBe(LogoStyles);
+    expect(button.at(0).prop('styling'))
+      .toBe(SocialButtonStyles);
   });
 });
 /* eslint-enable require-jsdoc, react/jsx-props-no-spreading */

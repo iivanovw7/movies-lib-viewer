@@ -25,6 +25,16 @@ const settings = {
    */
   locale: 'en',
   /**
+   * Social links
+   * @type {Object.<string>}
+   */
+  social: {
+    facebook: '/',
+    instagram: '/',
+    twitter: '/',
+    youtube: '/',
+  },
+  /**
    * Network config.
    * @type {Object}
    */

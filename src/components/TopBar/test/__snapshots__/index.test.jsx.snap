@@ -2,31 +2,89 @@
 
 exports[`[[33mTopBar[39m]: component test suite Should match snapshot 1`] = `
 <Container>
-  <Button
-    hidden={false}
-    href="https://www.themoviedb.org/?language=en-US"
-    index={0}
-    target="_blank"
-    variant="primary"
-  >
-    <Img
-      alt="TMDB"
-      className=""
-      src="SvgrURL"
+  <Block>
+    <Button
+      hidden={false}
+      href="/"
+      index={0}
       styling={
         Array [
-          "height:0.8em;margin-left:0.8em;",
-          "@media (min-width:",
-          "480",
-          "px){",
-          "
-    height: 0.6em;
-  ",
+          "color:",
+          "#ea4949",
+          ";margin:0.3em 0.3em 0.3em 0.8em;",
+          "&:focus{outline:",
+          "0.154rem",
+          " ",
+          "solid",
+          " ",
+          "#ea4949",
+          ";}",
+          ";&:hover{color:",
+          "#ed6464",
           ";}",
         ]
       }
-    />
-  </Button>
+      target="_self"
+    >
+      <ForwardRef
+        fill="currentColor"
+      />
+    </Button>
+    <Button
+      hidden={false}
+      href="/"
+      index={0}
+      styling={
+        Array [
+          "color:",
+          "#ea4949",
+          ";margin:0.3em 0.3em 0.3em 0.8em;",
+          "&:focus{outline:",
+          "0.154rem",
+          " ",
+          "solid",
+          " ",
+          "#ea4949",
+          ";}",
+          ";&:hover{color:",
+          "#ed6464",
+          ";}",
+        ]
+      }
+      target="_self"
+    >
+      <ForwardRef
+        fill="currentColor"
+      />
+    </Button>
+    <Button
+      hidden={false}
+      href="/"
+      index={0}
+      styling={
+        Array [
+          "color:",
+          "#ea4949",
+          ";margin:0.3em 0.3em 0.3em 0.8em;",
+          "&:focus{outline:",
+          "0.154rem",
+          " ",
+          "solid",
+          " ",
+          "#ea4949",
+          ";}",
+          ";&:hover{color:",
+          "#ed6464",
+          ";}",
+        ]
+      }
+      target="_self"
+    >
+      <ForwardRef
+        fill="currentColor"
+      />
+    </Button>
+  </Block>
   <Block>
     <div
       id="child-mock-id"
