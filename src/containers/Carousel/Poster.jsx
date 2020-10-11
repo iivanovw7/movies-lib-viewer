@@ -32,7 +32,13 @@ const Poster = ({ slide, id, posterSize, onClick }) => {
   return (
     <Button index={id} variant="primary" onClick={onClick} styling={PosterStyles}>
       <Image alt={title} src={posterUrl(slide, posterSize)} />
-      <Rating styling={RatingStyles} value={vote_average} text={vote_average.toPrecision(2)} min={0} max={10} />
+      <Rating
+        styling={RatingStyles}
+        value={vote_average}
+        text={vote_average.toPrecision(2)}
+        min={0}
+        max={10}
+      />
     </Button>
   );
 };

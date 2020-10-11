@@ -7,18 +7,14 @@ exports[`[[33mHeader[39m]: component test suite Should match snapshot 1`] = `
   <Container>
     <Button
       hidden={false}
-      href="/"
+      href="https://www.themoviedb.org/?language=en-US"
       index={0}
       styling={
         Array [
-          "color:",
-          "#ea4949",
-          ";margin-left:0.8em;&:hover{color:",
-          "#eb5252",
-          ";}svg{height:3rem;max-height:48px;max-width:48px;width:3rem;}",
+          "margin-left:0.8em;svg{height:3rem;max-height:48px;max-width:48px;width:3rem;}",
         ]
       }
-      target="_self"
+      target="_blank"
       variant="primary"
     >
       <ForwardRef

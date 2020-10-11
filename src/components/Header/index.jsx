@@ -7,7 +7,7 @@ import * as PropTypes from 'prop-types';
 import React from 'react';
 
 import HeaderBg from '../../../assets/img/loaderBg.jpg';
-import { ReactComponent as APPLogo } from '../../../assets/svg/film.svg';
+import { ReactComponent as APPLogo } from '../../../assets/svg/logo.svg';
 import Button from '../Button';
 import Separator from '../Separator';
 
@@ -31,7 +31,12 @@ function Header(props) {
   return (
     <Wrapper bg={HeaderBg}>
       <Container>
-        <Button variant="primary" href="/" target="_self" styling={LogoStyles}>
+        <Button
+          variant="primary"
+          href="https://www.themoviedb.org/?language=en-US"
+          target="_blank"
+          styling={LogoStyles}
+        >
           <APPLogo fill="currentColor" />
         </Button>
         {children}

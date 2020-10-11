@@ -96,10 +96,10 @@ describe(testName('Header', 'component test suite'), function HeaderTestSuite() 
       .toHaveLength(1);
 
     expect(button.prop('target'))
-      .toEqual('_self');
+      .toEqual('_blank');
 
     expect(button.prop('href'))
-      .toEqual('/');
+      .toEqual('https://www.themoviedb.org/?language=en-US');
 
     expect(button.prop('styling'))
       .toBe(LogoStyles);

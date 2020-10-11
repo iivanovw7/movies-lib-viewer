@@ -31,15 +31,18 @@
   0% {
     animation-timing-function: ease-out;
     filter: invert(0);
+    opacity: 1;
   }
 
   50% {
     animation-timing-function: ease-in;
     filter: invert(0.3);
+    opacity: 0;
   }
 
   100% {
     filter: invert(0);
+    opacity: 1;
   }
 }
 

@@ -96,6 +96,11 @@ export const linkColor = theme('mode', {
   dark: colorSet.dark.linkColor,
 });
 
+export const linkColorSecondary = theme('mode', {
+  light: colorSet.light.linkColor,
+  dark: lighten(0.1, colorSet.dark.colorAlert),
+});
+
 export const switchBackgroundColor = theme('mode', {
   light: colorSet.light.colorPrimary,
   dark: colorSet.dark.colorPrimary,

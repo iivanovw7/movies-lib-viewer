@@ -10,7 +10,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   height: 100%;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
 `;
 
