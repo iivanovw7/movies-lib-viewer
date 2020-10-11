@@ -2,6 +2,7 @@
 
 exports[`[[33mButton[39m]: component test suite Should match snapshot 1`] = `
 <f1
+  data-index={0}
   onClick={[Function]}
   styling={Array []}
   variant="primary"

@@ -61,7 +61,7 @@ Input.propTypes = {
   onChange: PropTypes.func,
   onInput: PropTypes.func,
   labelStyling: PropTypes.array,
-  inputStyling: PropTypes.array
+  inputStyling: PropTypes.array,
 };
 
 export default Input;

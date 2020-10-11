@@ -3,6 +3,7 @@
 exports[`[[33mThemeSwitch[39m]: component test suite Should match snapshot 1`] = `
 <Button
   hidden={false}
+  index={0}
   onClick={[Function]}
   styling={
     Array [

@@ -3,15 +3,13 @@
  * @module containers/Carousel
  * @author Igor Ivanov
  */
-import throttle from 'lodash.throttle';
 import * as PropTypes from 'prop-types';
-import React, { memo, useEffect, useState, useCallback } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { useSwipeable } from 'react-swipeable';
 import { compose } from 'redux';
 import { v4 as uuidv4 } from 'uuid';
 
-import Img from '../../components/Img';
 import { breakpoints } from '../../config/styles';
 import useDidUpdate from '../../utils/hooks/useDidUpdate';
 import useIntersect from '../../utils/hooks/useIntersect';
@@ -20,11 +18,10 @@ import { trendingNextPage } from '../Landing/model/actions';
 
 import Arrow, { directionsMap } from './Arrow';
 import Container from './Container';
-import Image from './Image';
-import ImageStyles from './ImageStyles';
 import { carouselDesired, carouselDrag, carouselNext, carouselPrev, carouselDone } from './model/actions';
 import { makeSelectCarousel } from './model/selectors';
-import { swiped, posterUrl } from './model/utils';
+import { swiped } from './model/utils';
+import Poster from './Poster';
 
 /**
  * Transition time prop in `ms`.
@@ -66,15 +63,17 @@ const posterSize = 300;
  * Determines if carousel shout be auto-scrolled periodically.
  * @type {boolean}
  */
-const autoScroll = true;
+const autoScroll = false;
 
 /* eslint-disable react/jsx-props-no-spreading, no-unused-vars */
 /**
  * Carousel component.
  * @method
- * @param {Object} props
+ *
+ * @param {Object.<module:containers/Carousel~propTypes>} props
  *  contains component props
  *  @see {@link module:containers/Carousel~propTypes}
+ *
  * @return {Node} React component with children.
  * @constructor
  */
@@ -85,6 +84,7 @@ function Carousel(props) {
     onCarouselNext,
     onCarouselPrev,
     onCarouselDone,
+    onClick,
     setTrendingNextPage,
     active,
     desired,
@@ -94,9 +94,7 @@ function Carousel(props) {
   const { length } = slides;
   const [updated, setUpdated] = useState(false);
   const [autoScrollable, setAutoScrollable] = useState(true);
-  const throttledHandleNext = useCallback(throttle(handleNext, 500), [active]);
-  const throttledHandlePrev = useCallback(throttle(handlePrev, 500), [active]);
-  const last = length - 1;
+  const last = slides.length - 1;
   const [ref, entry] = useIntersect({
     threshold: [0, 1],
   });
@@ -118,7 +116,7 @@ function Carousel(props) {
 
   /**
    * Setting up react-swipeable handlers.
-   * @type {SwipeableHandlers}
+   * @type {Object.<SwipeableHandlers>}
    */
   const handlers = useSwipeable({
     onSwiping(e) {
@@ -197,7 +195,7 @@ function Carousel(props) {
     const timeoutId = setTimeout(() => onCarouselDone(), transitionTime);
 
     if (updated) setUpdated(false);
-    if (!autoScrollable) setAutoScrollable(true);
+    if (autoScroll && !autoScrollable) setAutoScrollable(true);
 
     return () => {
       clearTimeout(timeoutId);
@@ -214,10 +212,16 @@ function Carousel(props) {
    * @param {SyntheticEvent | Event} eventData - object represents event data.
    */
   function handleCarouselClick(eventData) {
+    const index = Number(eventData.currentTarget.getAttribute('data-index'));
+
     eventData.preventDefault();
     eventData.stopPropagation();
 
-    setActiveSlide(Number(eventData.currentTarget.getAttribute('tabIndex')));
+    if (onClick) {
+      onClick(index);
+    } else {
+      setActiveSlide(index);
+    }
   }
 
   /**
@@ -242,32 +246,25 @@ function Carousel(props) {
 
   return (
     <Container>
-      <Arrow
-        hidden={active === 0}
-        rotate={180}
-        direction={directionsMap.prev}
-        handleClick={throttledHandlePrev}
-      />
-      <Arrow
-        hidden={active === length}
-        rotate={0}
-        direction={directionsMap.next}
-        handleClick={throttledHandleNext}
-      />
+      <Arrow hidden={active === 0} rotate={180} direction={directionsMap.prev} handleClick={handlePrev} />
+      <Arrow hidden={active === length} rotate={0} direction={directionsMap.next} handleClick={handleNext} />
       <div {...handlers} style={style}>
         {slides.slice(0, last).map((slide, index) => (
-          <Image
-            active={active}
-            index={index}
-            length={length}
-            alt={slide.title}
+          <Poster
             key={uuidv4()}
-            tabIndex={index}
-            src={posterUrl(slide, posterSize)}
+            slide={slide}
+            id={onClick ? slide.id : index}
+            posterSize={posterSize}
+            onClick={handleCarouselClick}
           />
         ))}
         <div ref={ref} data-ratio={entry.intersectionRatio}>
-          <Img src={posterUrl(slides[last], posterSize)} alt={slides[last].title} styling={ImageStyles} />
+          <Poster
+            slide={slides[last]}
+            id={onClick ? slides[last].id : slides.length}
+            posterSize={posterSize}
+            onClick={handleCarouselClick}
+          />
         </div>
       </div>
     </Container>
@@ -293,6 +290,8 @@ function Carousel(props) {
  *    triggers loading of new set of elements.
  * @property {Array.<*>} props.slides
  *    slides list.
+ * @property {function} [onClick]
+ *    optional element click handler.
  * @property {number} [active]
  *    active slide number.
  * @property {number} [desired]
@@ -310,6 +309,7 @@ Carousel.propTypes = {
   setActiveSlide: PropTypes.func.isRequired,
   setTrendingNextPage: PropTypes.func.isRequired,
   slides: PropTypes.array.isRequired,
+  onClick: PropTypes.func,
   active: PropTypes.number,
   desired: PropTypes.number,
   offset: PropTypes.number,
@@ -337,7 +337,7 @@ const mapStateToProps = (state) => {
  * Function mapping dispatch to props.
  * Dispatching action which may cause change of application state.
  * @func mapDispatchToProps
- * @param {Function} dispatch method.
+ * @param {function} dispatch method.
  * @return {Object} redux container
  */
 export function mapDispatchToProps(dispatch) {

@@ -12,17 +12,19 @@ import ImageStyles from './ImageStyles';
 
 /**
  * Creates LocaleImage component.
+ * @name LocaleSwitch/LocaleImage
  * @method
- * @param {Object} props
+ *
+ * @param {Object.<module:containers/LocaleSwitch/LocaleImage~propTypes>} props
  *  contains component props
- *  @see {@link module:containers/LocaleImage~LocaleImage.propTypes}
+ *  @see {@link module:containers/LocaleSwitch/LocaleImage~propTypes}
  * @return {Node} React component with children.
  * @constructor
  */
 const LocaleImage = ({ image, alt }) => <Img src={image} alt={alt} styling={ImageStyles} />;
 
 /**
- * @name LocaleImage.propTypes
+ * @name propTypes
  * @type {Object}
  * @param {Object} props - React PropTypes
  * @property {string} image - src link.

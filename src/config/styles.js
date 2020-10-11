@@ -22,7 +22,16 @@ export const base = {
   topBarHeight: 2,
   headerHeight: 5,
   footerHeight: 0.3,
-  zIndexes: ['TopBar', 'Header', 'Footer', 'Separator', 'CarouselProgress', 'Carousel', 'CarouselArrows'],
+  zIndexes: [
+    'TopBar',
+    'Header',
+    'Footer',
+    'Separator',
+    'CarouselProgress',
+    'Carousel',
+    'CarouselArrows',
+    'CarouselRating',
+  ],
   zIndex: 500,
 };
 

@@ -17,7 +17,7 @@ const Separator = styled.div`
     colorStops: [`${gradients.first} 0%`, `${gradients.second} 50%`, `${gradients.third} 95%`],
     toDirection: 'to right',
     fallback: gradients.first,
-  })}
+  })};
   width: 100%;
   z-index: ${zIndex.Separator};
 `;

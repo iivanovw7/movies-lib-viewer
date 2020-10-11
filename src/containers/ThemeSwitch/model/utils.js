@@ -40,7 +40,7 @@ const newThemeKey = pipe(themeIndex, ifElse(hasNextTheme, pipe(inc, nth(__, them
 
 /**
  * Returns either a new theme key or default key.
- * @type {f1}
+ * @type {Function|*}
  */
 const nextThemeKey = either(newThemeKey, DEFAULT_THEME);
 

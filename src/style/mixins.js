@@ -7,6 +7,8 @@ import { css } from 'styled-components';
 
 import { breakpoints, base } from '../config/styles';
 
+import { iconBorderColor } from './theme/borders';
+
 /**
  * Media mixin function.
  * @example
@@ -58,3 +60,41 @@ function assignIndexes(labels) {
  *  `;
  */
 export const zIndex = assignIndexes(base.zIndexes);
+
+/**
+ *
+ * @type {{
+ *  focusBorder: (function(*, *=, *=, *=, *=, *=): (Array|*)),
+ *  focusOutline: (function(*=, *=, *=): (Array|*))
+ * }}
+ */
+export const styleMixins = {
+  focusOutline: (color, width = '0.154rem', style = 'solid') => css`
+    &:focus {
+      outline: ${width} ${style} ${color};
+    }
+  `,
+  focusBorder: (
+    width,
+    style = 'solid',
+    color = iconBorderColor,
+    paddingVert = '0.5rem',
+    paddingHoriz = '0.5rem',
+    active = '_active',
+  ) => css`
+    border: ${width} ${style} transparent;
+    box-shadow: none;
+    outline: none;
+    padding: ${paddingVert} ${paddingHoriz};
+
+    &:focus {
+      border: ${width} ${style} ${color};
+      padding: ${paddingVert} ${paddingHoriz};
+    }
+
+    &${active}, &${active}:hover {
+      border: none;
+      padding: calc(${paddingVert} + ${width}) calc(${paddingHoriz} + ${width});
+    }
+  `,
+};

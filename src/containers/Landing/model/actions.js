@@ -13,14 +13,16 @@ import {
 
 /**
  * Load trending movies
- * @param  {number} page - page number to load
+ * @param {number} page - page number to load
+ * @param {string} locale - locale string.
  * @return {Object}
  *    Returns an action object with action type
  */
-export function loadTrending(page) {
+export function loadTrending(page, locale) {
   return {
     type: LOAD_TRENDING,
     page,
+    locale,
   };
 }
 

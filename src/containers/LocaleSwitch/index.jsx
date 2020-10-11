@@ -20,8 +20,8 @@ import nextLocaleKey from './model/utils';
 
 /**
  * Creates LocaleSwitch component.
- * @func LocaleSwitch
- * @param {Object} props
+ * @method
+ * @param {Object.<module:containers/LocaleSwitch~propTypes>} props
  *  contains component props
  *  @see {@link module:containers/LocaleSwitch~propTypes}
  * @return {Node} React component with children.

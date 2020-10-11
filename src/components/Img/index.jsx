@@ -13,23 +13,33 @@ export const StyledImg = styled.img`
 
 /**
  * Creates image component.
+ * @name Components/Img
  * @method
- * @param {Object} props
+ * @param {Object.<module:components/Img~propTypes>} props
  *  contains component props
- *  @see {@link module:components/Img~Img.propTypes}
+ *  @see {@link module:components/Img~propTypes}
  * @return {Node} React component with children.
  * @constructor
  */
-const Img = ({ src, alt, styling, handleLoad, className }) => (
-  <StyledImg src={src} alt={alt} onLoad={handleLoad} styling={styling} className={className} />
+const Img = ({ src, alt, id, styling, onClick, handleLoad, className }) => (
+  <StyledImg
+    src={src}
+    alt={alt}
+    data-id={id}
+    onLoad={handleLoad}
+    onClick={onClick}
+    styling={styling}
+    className={className}
+  />
 );
 
 /**
- * @name Img.propTypes
+ * @name propTypes
  * @type {Object}
  * @param {Object} props - React PropTypes
  * @property {string | Object} props.src - image src.
  * @property {string} props.alt - alt string.
+ * @property {string} props.id - id string.
  * @property {string} [props.className = ''] - className string.
  * @property {Array.<string>} [props.styling = []] - image additional styles.
  * @return {Array} React propTypes
@@ -39,7 +49,9 @@ Img.propTypes = {
   alt: PropTypes.string.isRequired,
   styling: PropTypes.array,
   className: PropTypes.string,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   handleLoad: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 Img.defaultProps = {

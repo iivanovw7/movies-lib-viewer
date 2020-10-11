@@ -20,8 +20,9 @@ import ThemeImage from './ThemeImage';
 
 /**
  * Creates ThemeSwitch component.
- * @func ThemeSwitch
- * @param {Object} props
+ * @method
+ *
+ * @param {Object.<module:containers/ThemeSwitch~PropTypes>} props
  *  contains component props
  *  @see {@link module:containers/ThemeSwitch~PropTypes}
  * @return {Node} React component with children.

@@ -6,8 +6,8 @@ import React from 'react';
 import { css } from 'styled-components';
 
 import ChildMock from '../../../__mocks__/childMock';
-import { noop } from '../../../__utils__/stub';
 import { testName } from '../../../__utils__/common';
+import { noop } from '../../../__utils__/stub';
 import Button from '../index';
 
 let undef;

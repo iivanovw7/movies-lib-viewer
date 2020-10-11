@@ -31,7 +31,7 @@ import Wrapper from './Wrapper';
  * Main application component.
  * Contains router setup and global styles connection.
  * @method
- * @param {Object} props
+ * @param {Object.<module:containers/App~propTypes>} props
  *  contains component props
  *  @see {@link module:containers/App~propTypes}
  * @return {Node} React component with children.

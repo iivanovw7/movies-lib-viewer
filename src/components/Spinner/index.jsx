@@ -20,10 +20,12 @@ export const defaultSpinnerSize = 50;
 
 /**
  * Creates image component.
+ * @name Components/Spinner
  * @method
- * @param {Object} props
+ *
+ * @param {Object.<module:components/Spinner~propTypes>} props
  *  contains component props
- *  @see {@link module:components/Spinner~Spinner.propTypes}
+ *  @see {@link module:components/Spinner~propTypes}
  * @return {Node} React component with children.
  * @constructor
  */
@@ -32,7 +34,7 @@ const Spinner = ({ color, size, style, mode }) => (
 );
 
 /**
- * @name Spinner.propTypes
+ * @name propTypes
  * @type {Object}
  * @param {Object} props - React PropTypes
  * @property {number} props.size - specifies how large the spinner should be rendered.

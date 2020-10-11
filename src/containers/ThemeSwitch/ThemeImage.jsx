@@ -12,10 +12,12 @@ import ImageStyles from './ImageStyles';
 
 /**
  * Creates ThemeImage component.
+ * @name ThemeSwitch/ThemeImage
  * @method
- * @param {Object} props
+ *
+ * @param {Object.<module:containers/ThemeSwitch/ThemeImage~propTypes>} props
  *  contains component props
- *  @see {@link module:containers/LocaleImage~propTypes}
+ *  @see {@link module:containers/ThemeSwitch/ThemeImage~propTypes}
  * @return {Node} React component with children.
  * @constructor
  */
